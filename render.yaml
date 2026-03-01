@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: smarthire
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn smarthire.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False

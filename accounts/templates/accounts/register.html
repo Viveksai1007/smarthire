@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+
+    <div class="card shadow-lg p-4 register-card">
+        
+        <h3 class="text-center mb-4">Create Account</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+
+            {% if form.role %}
+            <div class="mb-3">
+                {{ form.role.label_tag }}
+                {{ form.role }}
+            </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-success w-100 register-btn">
+                Register
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+<style>
+
+/* Card Styling */
+.register-card {
+    width: 420px;
+    border-radius: 15px;
+}
+
+/* Input Styling */
+input, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+input:focus, select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 6px rgba(25, 135, 84, 0.4);
+    outline: none;
+}
+
+/* Button Hover Effect */
+.register-btn {
+    transition: 0.3s ease;
+}
+
+.register-btn:hover {
+    transform: scale(1.05);
+    background-color: #157347;
+}
+
+/* Smooth Animation */
+.card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+{% endblock %}

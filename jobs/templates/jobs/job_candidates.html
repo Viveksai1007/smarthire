@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Applicants for {{ job.title }}</h2>
+
+{% if applications %}
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Candidate</th>
+            <th>Email</th>
+            <th>Match Score</th>
+            <th>Resume</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.candidate.username }}</td>
+            <td>{{ app.candidate.email }}</td>
+            <td><strong>{{ app.match_score }}%</strong></td>
+           <td>
+    {% if app.resume %}
+        <a href="{{ app.resume.resume_file.url }}" target="_blank">
+            View Resume
+        </a>
+    {% else %}
+        N/A
+    {% endif %}
+</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No applicants yet for this job.</p>
+{% endif %}
+
+{% endblock %}

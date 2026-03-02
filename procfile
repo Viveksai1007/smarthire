@@ -1,1 +1,1 @@
-web: gunicorn smarthire.wsgi
+web: gunicorn smarthire.wsgi --bind 0.0.0.0:$PORT

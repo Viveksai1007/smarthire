@@ -83,6 +83,8 @@ WSGI_APPLICATION = 'smarthire.wsgi.application'
 
 import os
 import dj_database_url
+import os
+print("DATABASE_URL VALUE:", os.environ.get("DATABASE_URL"))
 
 
 DATABASES = {

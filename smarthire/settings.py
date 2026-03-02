@@ -86,13 +86,14 @@ import dj_database_url
 import os
 print("DATABASE_URL VALUE:", os.environ.get("DATABASE_URL"))
 
+import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        conn_max_age=600,
-        ssl_require=False
+        default=os.environ.get("DATABASE_URL")
     )
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
